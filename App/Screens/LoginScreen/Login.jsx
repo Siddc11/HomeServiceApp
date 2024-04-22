@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: "#fff",
     borderRadius: 99,
-    marginTop: 35,
+    marginTop: 50,
   },
 });
