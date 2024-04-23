@@ -61,10 +61,11 @@ const styles = StyleSheet.create({
   SubContainer: {
     backgroundColor: "#8E3FFF",
     width: 410,
-    height: "50%",
+    height: "60%",
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
     padding: 30,
+    marginBottom: -200
   },
 
   button: {
