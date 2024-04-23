@@ -1,7 +1,27 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useOAuth } from "@clerk/clerk-expo";
+import * as WebBrowser from "expo-web-browser";
+import { useWarmUpBrowser } from "../../hooks/useWarmUpBrowser";
+WebBrowser.maybeCompleteAuthSession();
 
 export default function Login() {
+  useWarmUpBrowser();
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const onPress = React.useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
+ 
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, []);
   return (
     <View style={{ alignItems: "center" }}>
       <Image
@@ -30,7 +50,7 @@ export default function Login() {
         </Text>
         <View style={styles.button}>
           <TouchableOpacity
-            onPress={()=> console.log("Button Pressed")}
+            onPress={onPress}
             style={{
               alignItems: "center",
               flexDirection: "row",
@@ -65,7 +85,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
     padding: 30,
-    marginBottom: -200
+    marginBottom: -130
   },
 
   button: {
