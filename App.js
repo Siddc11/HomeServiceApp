@@ -1,8 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Login from './App/Screens/LoginScreen/Login';
-import {ClerkProvider, SignedIn, SignedOut} from "@clerk/clerk-expo";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import Login from "./App/Screens/LoginScreen/Login";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import * as SecureStore from "expo-secure-store";
+import { NavigationContainer } from "@react-navigation/native";
+import TabNavigation from "./App/Navigations/TabNavigation";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const tokenCache = {
   async getToken(key) {
@@ -20,35 +23,31 @@ const tokenCache = {
     }
   },
 };
- 
+
 export default function App() {
   return (
-    <ClerkProvider 
-    tokenCache={tokenCache}
-    publishableKey={'pk_test_dm9jYWwtZ3JvdXBlci05LmNsZXJrLmFjY291bnRzLmRldiQ '}>
-    <View style={styles.container}>
-     
-     {/* Sign in Component */}
-      <SignedIn>
-          <Text>You are Signed in</Text>
-        </SignedIn>
+    <ClerkProvider
+      tokenCache={tokenCache}
+      publishableKey={
+        "pk_test_dm9jYWwtZ3JvdXBlci05LmNsZXJrLmFjY291bnRzLmRldiQ "
+      }
+    >
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          {/* Sign in Component */}
+          <SignedIn style={{ flex: 1 }}>
+            <NavigationContainer>
+              <TabNavigation />
+            </NavigationContainer>
+          </SignedIn>
 
-      {/* Sign out componenet */}
-        <SignedOut>
-        <Login/>
-        </SignedOut>
-        
+          {/* Sign out component */}
+          <SignedOut style={{ flex: 1 }}>
+            <Login />
+          </SignedOut>
+        </View>
+      </SafeAreaView>
       <StatusBar style="auto" />
-    </View>
     </ClerkProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
