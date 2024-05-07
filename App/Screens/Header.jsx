@@ -13,9 +13,9 @@ const Header = () => {
         style={styles.userImage}
         />
       </View>
-      <View>
-        <Text style={{fontSize: 15}}>Welcome 😊</Text>
-        <Text style={{fontSize: 20, fontWeight:'bold'}}>{user?.fullName}</Text>
+      <View >
+        <Text style={{fontSize: 15, fontFamily:'outfit'}}>Welcome 😊</Text>
+        <Text style={{fontSize: 20, fontFamily:'outfit',fontWeight:'bold'}}>{user?.fullName}</Text>
       </View>
      </View>
       
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: '85%',
         fontSize: 16,
+        fontFamily:'outfit'
     },
     
     SearchBtn:{
