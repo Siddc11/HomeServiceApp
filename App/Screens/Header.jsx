@@ -30,6 +30,8 @@ const Header = () => {
         </View>
      </View>
 
+     {/* Hygraph setup endpoint done for the sliders in the homescreen */}
+
     </View>
 
 
