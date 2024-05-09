@@ -1,23 +1,49 @@
-import { View, Text } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import GlobalApi from '../Utils/GlobalApi'
+import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import GlobalApi from "../Utils/GlobalApi";
 
 export default function Slider() {
-    
-    const [slider, setSlider] = useState();
-    useEffect(()=>{
-     getSlider();
-    },[])
+  const [slider, setSlider] = useState();
+  useEffect(() => {
+    getSlider();
+  }, []);
 
-    const getSlider =()=>{
-        GlobalApi.getSlider().then(resp=>{
-            console.log("resp", resp.sliders);
-            setSlider(resp?.sliders)
-        })
-    }
+  const getSlider = () => {
+    GlobalApi.getSlider().then((resp) => {
+      console.log("resp", resp.sliders);
+      setSlider(resp?.sliders);
+    });
+  };
   return (
     <View>
-      <Text>Slider</Text>
+      <Text style={styles.heading}>Offers For You 🎉</Text>
+      <FlatList
+       horizontal={true}
+        data={slider}
+        renderItem={({ item, index }) => (
+          <View style={{marginRight: 10}}>
+            <Image
+              source={{ uri: item?.image[0]?.url }}
+              style={styles.SliderImage}
+            />
+          </View>
+        )}
+      />
     </View>
-  )
+  );
 }
+
+const styles = StyleSheet.create({
+  heading: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+
+  SliderImage: {
+    width: 270,
+    height: 150,
+    borderRadius: 20,
+    objectFit: "contain",
+  },
+});
