@@ -15,9 +15,7 @@ export default function Login() {
  
       if (createdSessionId) {
         setActive({ session: createdSessionId });
-      } else {
-        // Use signIn or signUp for next steps such as MFA
-      }
+      } 
     } catch (err) {
       console.error("OAuth error", err);
     }
@@ -34,7 +32,7 @@ export default function Login() {
           Lets Find
           <Text style={{ fontWeight: "bold" }}>
             {" "}
-            professional cleaning and repair
+            Medi-Clinic-Plus 🩺💉💊
           </Text>{" "}
           service
         </Text>
@@ -46,7 +44,7 @@ export default function Login() {
             marginTop: 30,
           }}
         >
-          Best App to find services nearby you at one     click👆
+          Best App to book Apointment and locate clinics and medicals nearby you at one     click👆
         </Text>
         <View style={styles.button}>
           <TouchableOpacity
