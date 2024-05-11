@@ -24,7 +24,7 @@ const getSlider = async () => {
 };
 
 const getCategory = async () => {
-    const query = gql`
+    const query2 = gql`
     query GetCategory {
         categories {
           id
@@ -36,13 +36,8 @@ const getCategory = async () => {
       }
       
     `;
-    try {
-        const result = await request(URL, query);
+        const result = await request(URL, query2);
         return result;
-    } catch (error) {
-        console.error("Error fetching slider data:", error);
-        return null;
-    }
 };
 
 export default {
