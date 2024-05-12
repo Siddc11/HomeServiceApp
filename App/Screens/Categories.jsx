@@ -31,7 +31,7 @@ const Categories=()=> {
                   style={{width:35, height:35}}
                 />  
             </View>
-            <Text style={{fontWeight:'500', marginTop:2}}>{item?.name}</Text>
+            <Text style={{fontWeight:'500', marginTop:2, fontSize: 12}}>{item?.name}</Text>
         </View>
         );
      }

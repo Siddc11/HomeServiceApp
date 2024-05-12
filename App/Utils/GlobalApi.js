@@ -40,7 +40,32 @@ const getCategory = async () => {
         return result;
 };
 
+const getBusinessList = async () => {
+    const query2 = gql`
+    query getBusinessList {
+        businessLists {
+          id
+          name
+          email
+          contactPerson
+          category {
+            name
+          }
+          address
+          about
+          images {
+            url
+          }
+        }
+      }
+      
+    `;
+        const result = await request(URL, query2);
+        return result;
+};
+
 export default {
     getSlider,
-    getCategory
+    getCategory,
+    getBusinessList
 };

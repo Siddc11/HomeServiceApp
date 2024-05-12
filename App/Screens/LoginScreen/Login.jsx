@@ -12,10 +12,10 @@ export default function Login() {
     try {
       const { createdSessionId, signIn, signUp, setActive } =
         await startOAuthFlow();
- 
+
       if (createdSessionId) {
         setActive({ session: createdSessionId });
-      } 
+      }
     } catch (err) {
       console.error("OAuth error", err);
     }
@@ -28,14 +28,20 @@ export default function Login() {
       />
 
       <View style={styles.SubContainer}>
-        <Text style={{ fontSize: 25, color: "#ffffff", textAlign: "center" }}>
-          Lets Find
-          <Text style={{ fontWeight: "bold" }}>
-            {" "}
-            Medi-Clinic-Plus 🩺💉💊
-          </Text>{" "}
-          service
+        <Text
+          style={{
+            fontSize: 25,
+            color: "#ffffff",
+            textAlign: "center",
+            fontWeight: "bold",
+            marginTop: 20
+          }}
+        >
+          Medi-Clinic-Plus
         </Text>
+
+        <Text style={{ textAlign: "center", fontSize: 25 }}>🩺💉💊</Text>
+
         <Text
           style={{
             fontSize: 16,
@@ -44,7 +50,17 @@ export default function Login() {
             marginTop: 30,
           }}
         >
-          Best App to book Apointment and locate clinics and medicals nearby you at one     click👆
+          Best App to book Apointment and locate clinics and medicals nearby you
+          at one{" "}
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+            color: "#fff",
+            textAlign: "center",
+          }}
+        >
+          click👆
         </Text>
         <View style={styles.button}>
           <TouchableOpacity
@@ -60,7 +76,9 @@ export default function Login() {
               source={require("./../../../assets/images/image.png")}
             />
             <Text style={{ color: "#fff" }}>_.</Text>
-            <Text style={{ marginLeft: 5 , fontWeight:'bold', fontSize:20}}>Continue with Google</Text>
+            <Text style={{ marginLeft: 5, fontWeight: "bold", fontSize: 20 }}>
+              Continue with Google
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -83,7 +101,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
     padding: 30,
-    marginBottom: -130
+    marginBottom: -130,
   },
 
   button: {
