@@ -30,12 +30,21 @@ const BusinessListByCategoryScreen = () => {
                 <Text style={{ fontSize: 25, fontWeight: '600' }}>{param?.category}</Text>
             </TouchableOpacity>
 
-            <FlatList 
+            {businessList?.length>0? <FlatList 
               data={businessList}
+              style={{marginTop: 10}}
               renderItem={({item, index})=>(
                 <BusinessListItem business={item}/>
               )}
-            />
+            />: 
+            <Text  style={{
+                marginTop: '20%',
+                textAlign: 'center',
+                fontSize: 20,
+                fontWeight: '500',
+                color:'grey'
+            }}>No Business Found</Text>
+            }
         </View>
     );
 };
