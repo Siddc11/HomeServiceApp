@@ -1,9 +1,10 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome6 } from '@expo/vector-icons';
 import Heading from "../Components/Heading";
+import BusinessPhotos from "./BusinessPhotos";
 
 const BusinessDetailScreen = () => {
   const param = useRoute().params;
@@ -27,6 +28,7 @@ const BusinessDetailScreen = () => {
 
   return (
     <View>
+    <ScrollView style={{height:'91%'}}>
       <TouchableOpacity
         style={{
           position: "absolute",
@@ -63,7 +65,7 @@ const BusinessDetailScreen = () => {
         <FontAwesome6 name="location-dot" size={25} color="#8E3FFF" style={{}}/>
         {business.address}</Text>
 
-        <View style={{borderWidth:1, borderColor:'grey', marginTop:20, marginBottom:20}}></View>
+        <View style={{borderWidth:0.5, borderColor:'grey', marginTop:20, marginBottom:20}}></View>
            <View>
             <Heading text={'About'}/>
             <Text
@@ -80,9 +82,29 @@ const BusinessDetailScreen = () => {
             </TouchableOpacity>
         </View>
 
-        <View style={{borderWidth:1, borderColor:'grey', marginTop:20, marginBottom:20}}></View>
-
+        <View style={{borderWidth:0.5, borderColor:'grey', marginTop:20, marginBottom:20}}></View>
+        <BusinessPhotos business={business}/>
       </View>
+    </ScrollView>
+    <View style={{display:"flex", flexDirection:'row', gap:8, margin:4}}>
+        <TouchableOpacity style={styles.msgbtn}>
+            <Text style={{
+                textAlign:'center',
+                fontSize:18,
+                fontWeight:'500',
+                color: '#8E3FFF'
+            }}>Message</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.bookbtn}>
+            <Text style={{
+                textAlign:'center',
+                fontSize:18,
+                fontWeight:'500',
+                color: '#FFF'
+            }}>Book Appointment</Text>
+        </TouchableOpacity>
+    </View>
     </View>
   );
 };
@@ -100,5 +122,21 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         gap:20,
         alignItems:'center'
+    },
+    msgbtn:{
+        padding: 15, 
+        backgroundColor:'#fff',
+        borderWidth:1,
+        borderColor:'#8E3FFF',
+        borderRadius:99,
+        flex:1
+    },
+    bookbtn:{
+        padding: 15, 
+        backgroundColor:'#8E3FFF',
+        borderWidth:1,
+        borderColor:'#8E3FFF',
+        borderRadius:99,
+        flex:1
     }
 })
