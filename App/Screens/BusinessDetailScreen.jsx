@@ -86,7 +86,7 @@ const BusinessDetailScreen = () => {
         <BusinessPhotos business={business}/>
       </View>
     </ScrollView>
-    <View style={{display:"flex", flexDirection:'row', gap:8, margin:4}}>
+    <View style={{display:"flex", flexDirection:'row', gap:8, margin:4,  backgroundColor: 'transparent'}}>
         <TouchableOpacity style={styles.msgbtn}>
             <Text style={{
                 textAlign:'center',
