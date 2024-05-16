@@ -1,16 +1,18 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, FlatList } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, FlatList, Modal } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome6 } from '@expo/vector-icons';
 import Heading from "../Components/Heading";
 import BusinessPhotos from "./BusinessPhotos";
+import BookingModal from "./BookingModal";
 
 const BusinessDetailScreen = () => {
   const param = useRoute().params;
   const [business, setBusiness] = useState(null);
   const navigation = useNavigation();
   const [readMore, setIsReadMore] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if (param && param.business) {
@@ -96,7 +98,9 @@ const BusinessDetailScreen = () => {
             }}>Message</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.bookbtn}>
+        <TouchableOpacity style={styles.bookbtn}
+        onPress={()=>setShowModal(true)}
+        >
             <Text style={{
                 textAlign:'center',
                 fontSize:18,
@@ -105,6 +109,12 @@ const BusinessDetailScreen = () => {
             }}>Book Appointment</Text>
         </TouchableOpacity>
     </View>
+    <Modal
+    animationType="slide"
+    visible={showModal}
+    >
+      <BookingModal hideModal={()=>setShowModal(false)}/>
+    </Modal>
     </View>
   );
 };
