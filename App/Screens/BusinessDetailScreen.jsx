@@ -89,15 +89,6 @@ const BusinessDetailScreen = () => {
       </View>
     </ScrollView>
     <View style={{display:"flex", flexDirection:'row', gap:8, margin:4,  backgroundColor: 'transparent'}}>
-        <TouchableOpacity style={styles.msgbtn}>
-            <Text style={{
-                textAlign:'center',
-                fontSize:18,
-                fontWeight:'500',
-                color: '#8E3FFF'
-            }}>Message</Text>
-        </TouchableOpacity>
-
         <TouchableOpacity style={styles.bookbtn}
         onPress={()=>setShowModal(true)}
         >

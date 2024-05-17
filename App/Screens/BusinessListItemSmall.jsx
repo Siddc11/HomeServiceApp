@@ -12,7 +12,7 @@ export default function BusinessListItemSmall({business}) {
         <Text style={{fontSize: 14, fontWeight:'500'}}>{business?.name}</Text>
         <Text style={{fontSize: 12, marginTop: 3}}>{business?.contactPerson}</Text>
         <Text style={
-            {fontSize: 11, 
+            {fontSize: 10, 
             padding: 3,
             color:'#8E3FFF',
             backgroundColor: '#f2e3fa',
