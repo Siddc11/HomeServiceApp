@@ -6,17 +6,22 @@ import {
   StyleSheet,
   FlatList,
   TextInput,
+  ToastAndroid,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CalendarPicker from "react-native-calendar-picker";
 import Heading from "../Components/Heading";
 import { ScrollView } from "react-native";
 import { KeyboardAvoidingView } from "react-native";
+import GlobalApi from "../Utils/GlobalApi";
+import { useUser } from "@clerk/clerk-expo";
+import moment from 'moment'
 
-const BookingModal = ({ hideModal }) => {
+const BookingModal = ({businessId, hideModal }) => {
   const [timeList, setTimeList] = useState();
   const [selectedTime, setSelectedTime] = useState();
   const [note , setNote] = useState();
+  const {user} = useUser(); 
 
   useEffect(() => {
     getTime();
@@ -49,6 +54,33 @@ const BookingModal = ({ hideModal }) => {
     setSelectedDate(date);
   };
 
+  const createBooking = () => {
+    if (!selectedDate || !selectedTime) {
+      ToastAndroid.show('Please Select Date and Time', ToastAndroid.LONG);
+      return;
+    }
+    
+    const data = {
+      userName: user?.fullName,
+      userEmail: user?.primaryEmailAddress.emailAddress,
+      time: selectedTime,
+      date: moment(selectedDate).format('DD-MMM-yyyy'),
+      note: note,
+      businessId: businessId,
+    };
+  
+    GlobalApi.createBooking(data)
+      .then(resp => {
+        console.log("Resp", resp);
+        ToastAndroid.show('Booking Created Successfully', ToastAndroid.LONG);
+        hideModal();
+      })
+      .catch(error => {
+        console.error("Error creating booking", error);
+        ToastAndroid.show('Failed to create booking', ToastAndroid.LONG);
+      });
+  };
+  
   return (
     <ScrollView>
     <KeyboardAvoidingView style={{ padding: 20 }}>
@@ -130,7 +162,9 @@ const BookingModal = ({ hideModal }) => {
           /> 
       </View>
       <View style={{marginTop: 15}}>
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={()=>createBooking()}
+        >
           <Text style={styles.BookBtn}>Confirm & Book</Text>
         </TouchableOpacity>
       </View>

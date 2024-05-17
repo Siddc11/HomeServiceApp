@@ -113,7 +113,9 @@ const BusinessDetailScreen = () => {
     animationType="slide"
     visible={showModal}
     >
-      <BookingModal hideModal={()=>setShowModal(false)}/>
+      <BookingModal 
+      businessId={business.id}
+      hideModal={()=>setShowModal(false)}/>
     </Modal>
     </View>
   );
@@ -147,6 +149,7 @@ const styles=StyleSheet.create({
         borderWidth:1,
         borderColor:'#8E3FFF',
         borderRadius:99,
+        elevation: 2,
         flex:1
     }
 })
