@@ -62,6 +62,4 @@ Contributions are welcome! Please fork the repository and submit a pull request 
     <img src="MyBookingScreen.jpg" alt="My Booking Screen" width="200" height="400">
 </div>
 
-![Demo Video](https://github.com/Siddc11/Med-Clinic-Plus/edit/master/video demonstation.mp4)
-
 ---
