@@ -5,7 +5,6 @@ import ProfileScreen from "../Screens/ProfileScreen";
 import BookingScreen from "../Screens/BookingScreen";
 import { Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 import HomeNavigation from "./HomeNavigation";
 
 const Tab = createBottomTabNavigator();

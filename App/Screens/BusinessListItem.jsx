@@ -14,17 +14,20 @@ const BusinessListItem = ({ business , booking}) => {
         borderRadius: 10,
         marginTop: 10,
         display: 'flex',
+        alignItems:'center',
         flexDirection:'row',
-        gap: 20
+        gap: 20,
+        borderWidth:2,
+        borderColor:'#f2e3fa'
       }}
       
       onPress={() => navigation.push('Business-Detail', { business })}
     >
       <Image
         source={{ uri: business?.images[0]?.url }}
-        style={{ width: 100, height: 120, borderRadius: 10 }}
+        style={{ width: 100, height: 100, borderRadius: 10, borderColor:'#8E3FFF', borderWidth:1}}
       />
-      <View style={{display:'flex', gap:8}}>
+      <View style={{flex:1, gap:8}}>
         <Text style={{fontSize: 15, color:'#3c3c3d'}}>{business.contactPerson}</Text>
         <Text style={{fontWeight:'bold', fontSize:18}}>{business.name}</Text>
 
@@ -40,11 +43,11 @@ const BusinessListItem = ({ business , booking}) => {
           alignSelf: 'flex-start'
         },
         booking?.bookingStatus=='Completed'?
-        {backgroundColor:'lightgreen', color:'green'}:
-        booking.bookingStatus=='Cancled'?
-        {backgroundColor:'lightred', color:'red'}:
+        {backgroundColor:'#83f28f', color:'black'}:
+        booking.bookingStatus=='Canceled'?
+        {backgroundColor:'#FF474C', color:'white'}:
         {
-          color:'#8ERFFF',
+          color:'#8E3FFF',
           backgroundColor: '#f2e3fa' }]}>
            {booking?.bookingStatus} 
      </Text> 
