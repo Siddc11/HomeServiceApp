@@ -34,13 +34,13 @@ export default function App() {
 
   return (
     <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey={
-        "pk_test_dm9jYWwtZ3JvdXBlci05LmNsZXJrLmFjY291bnRzLmRldiQ "
-      }
-    >
+  tokenCache={tokenCache}
+  publishableKey="pk_test_dm9jYWwtZ3JvdXBlci05LmNsZXJrLmFjY291bnRzLmRldiQ"
+>
+ 
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
+          
           {/* Sign in Component */}
           <SignedIn style={{ flex: 1 }}>
             <NavigationContainer>
