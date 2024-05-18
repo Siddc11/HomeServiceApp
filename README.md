@@ -49,4 +49,19 @@ The following libraries are essential for the functionality of Medi-Clinic-Plus:
 ## Contribution
 Contributions are welcome! Please fork the repository and submit a pull request for any feature requests or bug fixes.
 
+## Images and Demo Video 
+<div>
+    <img src="Login.jpg" alt="Login Screen" width="200" height="400">
+    <img src="HomeScreen.jpg" alt="Home Screen" width="200" height="400">
+    <img src="ProfileScreen.jpg" alt="Profile Screen" width="200" height="400">
+    <img src="ServicesList.jpg" alt="Services List Screen" width="200" height="400">
+</div>
+<div>
+    <img src="ServiceDetailed.jpg" alt="Service Detailed Screen" width="200" height="400">
+    <img src="BookingScreen.jpg" alt="Booking Screen" width="200" height="400">
+    <img src="MyBookingScreen.jpg" alt="My Booking Screen" width="200" height="400">
+</div>
+
+![Demo Video](https://github.com/Siddc11/Med-Clinic-Plus/edit/master/video demonstation.mp4)
+
 ---
